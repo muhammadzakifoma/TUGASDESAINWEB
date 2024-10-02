@@ -1,0 +1,82 @@
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Souvenir Jejepangan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/TUGASDESAINWEB/manifest.json"> <!-- Perbaiki jalur manifest -->
+</head>
+<body>
+    <header>
+        <button class="add-button">Install App</button> <!-- Tombol Install App dipindahkan ke atas -->
+        <img src="images/logo.png" alt="Logo Souvenir Japanese">
+        <h1>Toko Souvenir Japanese</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="contact.html">Hubungi Kami</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Produk Unggulan</h2>
+        <div class="produk">
+            <img src="images/produk1.png" alt="Produk 1">
+            <h3>Maneki Neko</h3>
+            <p>Harga: Rp 300.000</p>
+        </div>
+        <div class="produk">
+            <img src="images/produk2.png" alt="Produk 2">
+            <h3>Kimmidol</h3>
+            <p>Harga: Rp 150.000</p>
+        </div>
+    </main>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/TUGASDESAINWEB/service-worker.js') // Perbaiki jalur service worker
+              .then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              }, function(error) {
+                console.log('ServiceWorker registration failed: ', error);
+              });
+          });
+        }
+    </script>
+
+    <!-- Add to Home Screen Feature -->
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let deferredPrompt;
+            const addBtn = document.querySelector('.add-button');
+            if (addBtn) {
+                addBtn.style.display = 'none'; // Tersembunyi awalnya
+            }
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                if (addBtn) {
+                    addBtn.style.display = 'block'; // Tampilkan tombol saat bisa diinstal
+                }
+
+                addBtn.addEventListener('click', () => {
+                    addBtn.style.display = 'none';
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('User accepted the A2HS prompt');
+                        } else {
+                            console.log('User dismissed the A2HS prompt');
+                        }
+                        deferredPrompt = null;
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

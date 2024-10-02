@@ -1,0 +1,64 @@
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubungi Kami - Souvenir Jejepangan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo Souvenir Japanese">
+        <h1>Hubungi Kami</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="contact.html">Hubungi Kami</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Kontak</h2>
+        <form action="submit_form.html" method="POST">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="kategori">Kategori Pesan:</label>
+            <select id="kategori" name="kategori">
+                <option value="pertanyaan">Pertanyaan</option>
+                <option value="saran">Saran</option>
+                <option value="masalah">Masalah</option>
+            </select><br><br>
+
+            <label for="pesan">Pesan:</label>
+            <textarea id="pesan" name="pesan" rows="4" cols="50" required></textarea><br><br>
+
+            <p>Apakah Anda ingin menerima balasan?</p>
+            <input type="radio" id="balasanYa" name="balasan" value="ya" required>
+            <label for="balasanYa">Ya</label><br>
+            <input type="radio" id="balasanTidak" name="balasan" value="tidak">
+            <label for="balasanTidak">Tidak</label><br><br>
+
+            <input type="submit" value="Kirim Pesan">
+        </form>
+    </main>
+
+    <footer>
+        <p>Email: mzakifoma7@gmail.com</p>
+        <p>Telepon: +62 896 3076 291</p>
+    </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Form berhasil dikirim');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
