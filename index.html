@@ -62,14 +62,14 @@
             let deferredPrompt;
             const addBtn = document.querySelector('.add-button');
             if (addBtn) {
-                addBtn.style.display = 'none'; // Tersembunyi awalnya
+                addBtn.style.display = 'none'; 
             }
 
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 deferredPrompt = e;
                 if (addBtn) {
-                    addBtn.style.display = 'block'; // Tampilkan tombol saat bisa diinstal
+                    addBtn.style.display = 'block'; 
                 }
 
                 addBtn.addEventListener('click', () => {
