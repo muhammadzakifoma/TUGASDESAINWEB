@@ -8,7 +8,7 @@ const urlsToCache = [
     '/TUGASDESAINWEB/images/logo.png',
     '/TUGASDESAINWEB/images/produk1.png',
     '/TUGASDESAINWEB/images/produk2.png',
-    '/TUGASDESAINWEB/offline.html' // Tambahkan offline.html ke cache
+    '/TUGASDESAINWEB/offline.html' // 
 ];
 
 // Install Service Worker
