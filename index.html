@@ -4,10 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Souvenir Jejepangan</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/TUGASDESAINWEB/manifest.json"> <!-- Perbaiki jalur manifest -->
 </head>
 <body>
     <header>
+        <button class="add-button">Install App</button> <!-- Tombol Install App dipindahkan ke atas -->
         <img src="images/logo.png" alt="Logo Souvenir Japanese">
         <h1>Toko Souvenir Japanese</h1>
         <nav>
@@ -21,7 +22,6 @@
     <main>
         <h2>Produk Unggulan</h2>
         <div class="produk">
-            <button class="add-button">Install App</button>
             <img src="images/produk1.png" alt="Produk 1">
             <h3>Maneki Neko</h3>
             <p>Harga: Rp 300.000</p>
@@ -31,17 +31,18 @@
             <h3>Kimmidol</h3>
             <p>Harga: Rp 150.000</p>
         </div>
-    </main> 
+    </main>
 
     <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
           window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-              console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(error) {
-              console.log('ServiceWorker registration failed: ', error);
-            });
+            navigator.serviceWorker.register('/TUGASDESAINWEB/service-worker.js') // Perbaiki jalur service worker
+              .then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              }, function(error) {
+                console.log('ServiceWorker registration failed: ', error);
+              });
           });
         }
     </script>
