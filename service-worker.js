@@ -11,7 +11,6 @@ const urlsToCache = [
     '/TUGASDESAINWEB/offline.html' 
 ];
 
-// Install Service Worker
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
