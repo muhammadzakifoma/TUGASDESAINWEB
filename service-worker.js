@@ -1,13 +1,14 @@
 const CACHE_NAME = 'souvenir-cache-v1';
 const urlsToCache = [
-    '/TUGASDESAINWEB/',
+    '/',
     '/TUGASDESAINWEB/index.html',
     '/TUGASDESAINWEB/about.html',
     '/TUGASDESAINWEB/contact.html',
     '/TUGASDESAINWEB/style.css',
     '/TUGASDESAINWEB/images/logo.png',
     '/TUGASDESAINWEB/images/produk1.png',
-    '/TUGASDESAINWEB/images/produk2.png'
+    '/TUGASDESAINWEB/images/produk2.png',
+    '/TUGASDESAINWEB/offline.html' // Tambahkan offline.html ke cache
 ];
 
 // Install Service Worker
@@ -26,7 +27,15 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
-                return response || fetch(event.request);
+                // Jika ada respons dalam cache, kembalikan itu
+                if (response) {
+                    return response;
+                }
+                // Jika tidak ada, ambil dari jaringan
+                return fetch(event.request).catch(() => {
+                    // Jika jaringan gagal, kembalikan offline.html
+                    return caches.match('/TUGASDESAINWEB/offline.html');
+                });
             })
     );
 });
