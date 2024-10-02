@@ -5,7 +5,6 @@
     <title>Souvenir Jejepangan</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="/TUGASDESAINWEB/manifest.json">
-
 </head>
 <body>
     <header>
@@ -32,21 +31,29 @@
             <h3>Kimmidol</h3>
             <p>Harga: Rp 150.000</p>
         </div>
+        <section>
+            <h3>Fitur Progressive Web App (PWA)</h3>
+            <p>Website ini adalah Progressive Web App (PWA) yang memungkinkan Anda untuk:</p>
+            <ul>
+                <li>Mengakses konten secara offline.</li>
+                <li>Menambahkan aplikasi ini ke layar utama perangkat Anda.</li>
+                <li>Mendapatkan pengalaman pengguna yang cepat dan responsif.</li>
+            </ul>
+        </section>
     </main> 
 
     <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/TUGASDESAINWEB/service-worker.js')
-            .then(function(registration) {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(error) {
-                console.log('ServiceWorker registration failed: ', error);
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/TUGASDESAINWEB/service-worker.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, function(error) {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
             });
-    });
-}
-
+        }
     </script>
 
     <!-- Add to Home Screen Feature -->
