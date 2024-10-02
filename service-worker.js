@@ -8,14 +8,27 @@ const urlsToCache = [
     '/TUGASDESAINWEB/images/logo.png',
     '/TUGASDESAINWEB/images/produk1.png',
     '/TUGASDESAINWEB/images/produk2.png',
-    '/TUGASDESAINWEB/offline.html' 
+    '/TUGASDESAINWEB/offline.html' // Pastikan file ini ada
 ];
 
+// Install Service Worker
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log('Cache opened');
-            return cache.addAll(urlsToCache);
+            // Gunakan Promise.all untuk memeriksa setiap URL
+            return Promise.all(urlsToCache.map((url) => {
+                return fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Failed to fetch ${url}: ${response.status}`);
+                        }
+                        return cache.add(url); // Menambahkan ke cache
+                    })
+                    .catch(error => {
+                        console.error(`Failed to cache ${url}: ${error}`);
+                    });
+            }));
         })
     );
 });
